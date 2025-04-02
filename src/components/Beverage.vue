@@ -4,13 +4,14 @@
     <Hot v-else />
     <Contents>
       <template v-slot:top>
-        <Creamer />
+        <Creamer v-if="creamClass !== 'c1'" :creamClass="creamClass" />
       </template>
       <template v-slot:mid>
-        <Syrup />
+        <Syrup v-if="syrupClass !== 's1'" :syrupClass="syrupClass" />
+        <Syrup v-else :syrupClass="baseClass" />
       </template>
       <template v-slot:bottom>
-        <Base />
+        <Base :baseClass="baseClass"/>
       </template>
     </Contents>
   </Mug>
@@ -23,8 +24,13 @@ import Base from "./Base.vue";
 import Creamer from "./Creamer.vue";
 import Hot from "./Hot.vue";
 import Cold from "./Cold.vue";
+
 type Props = {
   isIced: boolean;
+  baseClass: string;
+  syrupClass: string;
+  creamClass: string;
 };
 defineProps<Props>();
+
 </script>

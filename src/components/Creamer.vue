@@ -1,11 +1,32 @@
 <template>
   <div class="froth">
-    <div v-for=" in 5" class="foam"></div>
+    <div v-for=" in 5" :class="['foam', creamClass]"></div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+
+type Props = {
+  creamClass: string;
+};
+defineProps<Props>();
+
+</script>
 <style lang="scss" scoped>
+
+/*milk*/
+.c2 {
+  background: aliceblue;
+}
+/*cream*/
+.c3 {
+  background: #F5F5DC
+}
+/*half and half*/
+.c4 {
+  background: #FFFACD
+}
+
 .froth {
   overflow: visible;
   transform: translateY(400%);
@@ -17,7 +38,7 @@
 }
 .foam {
   display: block;
-  background: #e4e0d2;
+  /*background: #e4e0d2;*/
   border-radius: 30px;
   height: 40px;
   width: 40px;
@@ -54,4 +75,5 @@
   top: 2px;
   right: 10px;
 }
+
 </style>
